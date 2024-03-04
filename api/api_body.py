@@ -2,7 +2,10 @@ import requests
 import json
 import pytest
 from page_object.api_base_page import BasePage
+from faker import Faker
 import requests
+
+fake = Faker()
 
 
 class DeveloperRegistrationApi(BasePage):
@@ -29,4 +32,31 @@ class DeveloperRegistrationApi(BasePage):
 
         body['email'] = email
         body['username'] = username
+        return body
+
+
+class PetStore:
+
+    def create_pet(self, name, pet_id):
+        body = {
+            "id": 1,
+            "category": {
+                "id": 2,
+                "name": "Cat"
+            },
+            "name": "Aly",
+            "photoUrls": [
+                "string"
+            ],
+            "tags": [
+                {
+                    "id": 1,
+                    "name": "Cat"
+                }
+            ],
+            "status": "available"
+        }
+
+        body['name'] = name
+        body['id'] = pet_id
         return body
